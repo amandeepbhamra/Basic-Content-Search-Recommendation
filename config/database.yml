@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: cogito-task3_development
+
+test:
+  <<: *default
+  database: cogito-task3_test
+
+production:
+  <<: *default
+  database: cogito-task3_production
+  username: <%= ENV['DBUSER'] %>
+  password: <%= ENV['COGITO-TASK3_DATABASE_PASSWORD'] %>
