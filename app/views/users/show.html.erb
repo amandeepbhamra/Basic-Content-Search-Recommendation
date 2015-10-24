@@ -1,3 +1,5 @@
+<%= link_to 'Resources', resources_path %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,5 +17,8 @@
   <%= @user.role %>
 </p>
 
+<h1>Recommended Resources</h1>
 
-<%= link_to 'Resources', resources_path %>
+<div id='resources'>
+  <%= render 'resources/index', resources: @recommended_resources %>
+</div>

@@ -6,6 +6,8 @@ class ResourcesController < ApplicationController
   def index
     @q = Resource.includes([:subject, :tags]).ransack(params[:q])
     @resources = @q.result
+    keyword = params[:q][:title_or_description_or_subject_title_or_tags_name_cont].to_s if params[:q] and !params[:q][:title_or_description_or_subject_title_or_tags_name_cont].to_s.blank?
+    current_user.save_history(keyword) if current_user.role == 'Student' and !@resources.blank? and !keyword.blank?
   end
 
   # GET /resources/1

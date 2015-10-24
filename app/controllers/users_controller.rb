@@ -4,13 +4,17 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    redirect_to current_user
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @resources = Resource.includes([:subject, :tags])
+    if current_user.role == 'Student'
+      subject_ids = current_user.proficiencies.where("marks_in_perc < ?", 65).pluck(:subject_id)
+      keywords = current_user.search_histories.order("hits").limit(5).pluck(:keywords)
+      @recommended_resources = Resource.includes([:subject, :tags]).where("subject_id IN (?)", subject_ids) + Resource.includes([:subject, :tags]).ransack(title_or_description_or_subject_title_or_tags_name_cont_any: keywords).result.limit(5)
+    end
   end
 
   # GET /users/new

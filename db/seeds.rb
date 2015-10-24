@@ -45,3 +45,15 @@ subjects = Subject.where(subjectable_type: 'Classroom')
     end
   end
 end
+
+# Create Proficiencies #
+classrooms = Classroom.includes(:students, :subjects)
+classrooms.each do |classroom|
+  students = classroom.students
+  subjects = classroom.subjects
+  students.each do |student|
+    subjects.sample(rand(5)).each do |sub|
+      student.proficiencies.create(subject_id: sub.id, marks_in_perc: rand(100))
+    end
+  end
+end

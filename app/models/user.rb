@@ -8,6 +8,15 @@ class User < ActiveRecord::Base
 
   has_many :classrooms, foreign_key: 'teacher_id'
 
+  has_many :proficiencies, foreign_key: 'student_id'
+  has_many :search_histories, foreign_key: 'student_id'
+
   scope :teachers, -> { where(role: 'Teacher') }
   scope :students, -> { where(role: 'Student') }
+
+  def save_history(keyword)
+    history = self.search_histories.where('keywords LIKE ?', "%#{keyword}%").first
+    history.blank? ? self.search_histories.create(keywords: keyword) : history.increment(:hits).save
+  end
+
 end
