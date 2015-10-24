@@ -4,7 +4,8 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @q = Resource.includes([:subject, :tags]).ransack(params[:q])
+    @resources = @q.result
   end
 
   # GET /resources/1

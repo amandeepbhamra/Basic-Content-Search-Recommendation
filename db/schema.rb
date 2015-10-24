@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023123437) do
+ActiveRecord::Schema.define(version: 20151024212028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,50 @@ ActiveRecord::Schema.define(version: 20151023123437) do
     t.integer  "teacher_id"
   end
 
+  create_table "proficiencies", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "subject_id"
+    t.decimal  "marks_in_perc"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "resources", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "subject_id"
+  end
+
+  create_table "search_histories", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "keywords"
+    t.integer  "hits"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "title"
+    t.text     "decription"
+    t.integer  "subjectable_id"
+    t.string   "subjectable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

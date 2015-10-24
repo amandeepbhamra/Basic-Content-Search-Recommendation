@@ -1,0 +1,7 @@
+<%= form_for @q, url: index_resources_path, remote: :true do |f| %>
+
+  <%= f.label :title_or_description_or_subject_title_or_tags_name_cont, "Search" %>
+  <%= f.search_field :title_or_description_or_subject_title_or_tags_name_cont %>
+
+  <%= f.submit "Search" %>
+<% end %>

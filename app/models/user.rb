@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :classroom
 
   has_many :classrooms, foreign_key: 'teacher_id'
+
+  scope :teachers, -> { where(role: 'Teacher') }
+  scope :students, -> { where(role: 'Student') }
 end

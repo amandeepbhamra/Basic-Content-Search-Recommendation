@@ -6,15 +6,8 @@ gem 'rails', '4.2.4'
 gem 'devise'
 gem 'thin'
 gem 'nested_form'
-gem "therubyracer", platform: :ruby
-gem "twitter-bootstrap-rails"
-gem 'jquery-ui-rails'
-gem 'rack-contrib'
-gem 'soulmate', :require => 'soulmate/server'
-gem 'redis'
-gem "paperclip", "~> 4.3"
-gem 'roo'
 gem 'pg'
+gem 'ransack'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
