@@ -11,3 +11,26 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore other unneeded files.
+#database.yml
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+/public/uploads
+/public/assets
+.elasticbeanstalk/
+.c9/*
+/bundler*
+
+# Ignore application configuration
+/config/application.yml
+.env.local
+.capistrano/*
+#/config/database.yml
+dump.rdb
+.ruby-gemset

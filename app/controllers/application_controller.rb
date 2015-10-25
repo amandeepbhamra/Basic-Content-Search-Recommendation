@@ -9,8 +9,4 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     resource
   end
-
-  def configure_permitted_parameters #--- for permitting signup parameters ---#
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :role, :name) }
-  end
 end

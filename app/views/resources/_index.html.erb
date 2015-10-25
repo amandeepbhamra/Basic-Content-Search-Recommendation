@@ -1,4 +1,4 @@
-<% unless resources.blank? %>
+<% unless @resources.blank? %>
   <table>
     <thead>
       <tr>
@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <% resources.each do |resource| %>
+      <% @resources.each do |resource| %>
         <tr>
           <td><%= link_to resource.title, resource %></td>
           <td><%= truncate resource.description, length: 25 %></td>
