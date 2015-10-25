@@ -1,28 +1,29 @@
-== README
+Basic Content Search and Recommendation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Requirements:
 
-Things you may want to cover:
+    Rails 4.2.4
 
-* Ruby version
+    Ruby 2.2.2
 
-* System dependencies
+    Postgres
 
-* Configuration
+Setup:
 
-* Database creation
+    Clone this app to your desired location
 
-* Database initialization
+    Bundle Install
 
-* How to run the test suite
+    Configure database.yml and env variables
 
-* Services (job queues, cache servers, search engines, etc.)
+    rake db:create:all
 
-* Deployment instructions
+    rake db:migrate
 
-* ...
+    rake db:seed
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+How to Login with dummy data as this app doesn't allow any registrations:
+  
+    Select any students email from database using following command:
+        User.students.first.email
+    and the password for all users is "testing"
